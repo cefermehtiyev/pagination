@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create cards table
+      author: Cefer Mehtiyev
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_name
+                  type: varchar(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: age
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: birth_place
+                  type: varchar(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(256)
+                  constraints:
+                    nullable: false
+
+
+
+          remarks: Table to store information about cards
