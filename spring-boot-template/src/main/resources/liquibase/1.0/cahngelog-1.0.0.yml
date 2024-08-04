@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: Create cards table
+      id: Create users table
       author: Cefer Mehtiyev
       changes:
         - createTable:
@@ -15,7 +15,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: user_name
-                  type: varchar(256)
+                  type: varchar(64)
                   constraints:
                     nullable: false
               - column:
@@ -25,7 +25,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: birth_place
-                  type: varchar(256)
+                  type: varchar(64)
                   constraints:
                     nullable: false
               - column:
@@ -33,7 +33,17 @@ databaseChangeLog:
                   type: varchar(256)
                   constraints:
                     nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: update_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
 
 
 
-          remarks: Table to store information about cards
+          remarks: Table to store information about users
