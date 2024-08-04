@@ -7,9 +7,8 @@ import az.ingress.model.response.PageableUserResponse;
 import az.ingress.model.response.UserResponse;
 import az.ingress.service.abstraction.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
-
 import org.springframework.web.bind.annotation.*;
+
 
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
@@ -17,6 +16,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("v1/users")
+@CrossOrigin
 public class UserController {
     private final UserService userService;
 
@@ -53,7 +53,7 @@ public class UserController {
     @GetMapping
     public PageableUserResponse getUsers(PageCriteria pageCriteria,
                                          UserCriteria userCriteria){
-        return userService.getUsers(pageCriteria, userCriteria);
+        return userService.users(pageCriteria, userCriteria);
 
     }
 

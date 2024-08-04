@@ -1,7 +1,10 @@
 package az.ingress.exception;
 
+import lombok.Getter;
+
+@Getter
 public class NotFoundException extends RuntimeException{
-    String code;
+     private String code;
 
 
     public NotFoundException(String message, String code) {

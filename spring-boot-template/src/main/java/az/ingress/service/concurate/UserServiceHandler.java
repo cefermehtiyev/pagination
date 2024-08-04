@@ -21,7 +21,6 @@ import java.util.List;
 import static az.ingress.mapper.UserMapper.USER_MAPPER;
 import static az.ingress.model.enums.ExceptionConstants.NOT_FOUND_EXCEPTION;
 import static az.ingress.model.enums.UserStatus.INACTIVE;
-import static az.ingress.util.CacheUtil.mapToPageableResponse;
 
 @Slf4j
 @Service
@@ -31,6 +30,7 @@ public class UserServiceHandler implements UserService {
 
     @Override
     public void createUser(UserRequest request) {
+        log.info("ActionLog.createUser.start {}", request);
         userRepository.save(USER_MAPPER.buldUserEntity(request));
 
     }
@@ -43,21 +43,17 @@ public class UserServiceHandler implements UserService {
 
     }
 
-    public List<UserResponse> getAllUser(){
-        return userRepository.findAll().stream().map(USER_MAPPER::buldUserResponse).toList();
-    }
 
     public void updateUser(Long id, UserRequest request) {
         var user = fetchUserExist(id);
-        user.setUserName(request.getUserName());
-        user.setAge(request.getAge());
-        user.setBirthPlace(request.getBirthPlace());
+        USER_MAPPER.updateUser(user,request);
         userRepository.save(user);
     }
 
     public void deleteUser(Long id){
         var user = fetchUserExist(id);
         user.setStatus(INACTIVE);
+        userRepository.save(user);
     }
 
     @Override
@@ -67,21 +63,21 @@ public class UserServiceHandler implements UserService {
         userRepository.save(user);
     }
 
+
     @Override
-    public PageableUserResponse getUsers(PageCriteria pageCriteria, UserCriteria userCriteria) {
+    public PageableUserResponse users(PageCriteria pageCriteria, UserCriteria userCriteria) {
         var userPage = userRepository.findAll(
                 new UserSpecification(userCriteria),
                 PageRequest.of(pageCriteria.getPage(),pageCriteria.getCount(), Sort.by("id").descending())
         );
-        return mapToPageableResponse(userPage);
+        return USER_MAPPER.buildUserPageableResponse(userPage);
     }
 
 
     private UserEntity fetchUserExist(Long id){
         return userRepository.findById(id).
-                orElseThrow(()->{
-                    log.error("ActionLog.fetchUserExist.error card with id:{}",id);
-                    return new NotFoundException(NOT_FOUND_EXCEPTION.getCode(),NOT_FOUND_EXCEPTION.getMessage() );});
+                orElseThrow(()->
+                     new NotFoundException(NOT_FOUND_EXCEPTION.getCode(),NOT_FOUND_EXCEPTION.getMessage() ));
 
     }
 }

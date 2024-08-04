@@ -11,6 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+
 import static az.ingress.model.constants.CriteriaConstants.AGE;
 import static az.ingress.model.constants.CriteriaConstants.BIRTH_PLACE;
 import static az.ingress.util.PredicateUtil.applyLikePattern;
@@ -22,8 +23,8 @@ public class UserSpecification implements Specification<UserEntity> {
 
     @Override
     public Predicate toPredicate(Root<UserEntity> root,
-                                                    CriteriaQuery<?>query,
-                                                    CriteriaBuilder cb) {
+                                 CriteriaQuery<?>query,
+                                 CriteriaBuilder cb) {
 
         var predicates = PredicateUtil.builder().
                 addNullSafety(userCriteria.getBirthPlace(),

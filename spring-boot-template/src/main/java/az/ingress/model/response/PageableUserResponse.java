@@ -11,8 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PageableUserResponse {
-    private List<UserResponse> users;
+public class PageableUserResponse <T> {
+    private List<T> users;
     private Integer lastPageNumber;
     private Integer totalElements;
     private boolean hasNextPage;
