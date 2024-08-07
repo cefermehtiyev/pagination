@@ -2,7 +2,7 @@ package az.ingress.dao.entity;
 
 import az.ingress.model.enums.UserStatus;
 import lombok.*;
-import lombok.experimental.FieldNameConstants;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 

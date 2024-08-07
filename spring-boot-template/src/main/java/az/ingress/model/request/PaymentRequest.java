@@ -4,13 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRequest {
-    private String userName;
-    private Integer age;
-    private String birthPlace;
-    private CardRequest cardRequest;
-
+public class PaymentRequest {
+    private BigDecimal balance;
 }
