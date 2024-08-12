@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create payments table
+      author: Cefer Mehtiyev
+      changes:
+        - createTable:
+            tableName: payments
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: balance
+                  type: numeric(16,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: payment_status
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+
+
+
+          remarks: Table to store information about payments
