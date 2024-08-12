@@ -1,10 +1,16 @@
 package az.ingress.model.constants;
 
-public interface CriteriaConstants {
 
-    String AGE = "age";
-    String BIRTH_PLACE = "birthPlace";
-    Integer PAGE_DEFAUL_VALUE = 0;
-    Integer COUNT_DEFAUL_VALUE = 0;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+import static lombok.AccessLevel.PRIVATE;
+
+@NoArgsConstructor(access = PRIVATE)
+public final class CriteriaConstants {
+
+    public static final String AGE = "age";
+    public static final String BIRTH_PLACE = "birthPlace";
+
 
 }

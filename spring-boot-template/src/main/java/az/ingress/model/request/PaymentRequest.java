@@ -1,13 +1,14 @@
-package az.ingress.exception;
+package az.ingress.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErrorResponse {
-    private String code;
-    private String message;
+public class PaymentRequest {
+    private BigDecimal balance;
 }

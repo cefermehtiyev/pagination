@@ -11,5 +11,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+    open-in-view: false
   liquibase:
     change-log: classpath:liquibase/changelog-master.yml

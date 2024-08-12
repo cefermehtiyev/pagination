@@ -11,5 +11,6 @@ public class UserRequest {
     private String userName;
     private Integer age;
     private String birthPlace;
+    private CardRequest cardRequest;
 
 }
